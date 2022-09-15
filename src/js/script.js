@@ -1,69 +1,38 @@
 "use strict";
 
-const numberOfFilms = +prompt('How many movies you have seen?', '');
+let num = 20;
 
-let personalMovieDB = {
-    count: numberOfFilms,
-    movies: {},
-    actors: {},
-    genres: [],
-    private: false
-};
-
-
-for (let i = 0; i < 2; i++){
-    const a = prompt('Last seen movie', ''),
-          b = prompt('Your moovie score?', '');
-
-    if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-        personalMovieDB.movies[a] = b;
-        console.log('done');
-    } else {
-        console.log('error');
-        i--;
-    }
+function showFirstMessage(text) {
+    console.log(text);
+    console.log(num);
 }
 
+showFirstMessage("Hello World!");
+console.log(num);
 
-// Второй способ с приминением while
-// let i = 0;
-// while (i < 2) {
-//     const a = prompt('Last seen movie', ''),
-//           b = prompt('Your moovie score?', '');
-//     if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-//         personalMovieDB.movies[a] = b;
-//         console.log('done');
-//         i++;
-//     } else {
-//         console.log('error');
-//     }
+// function calc(a, b) {
+//     return (a + b);
 // }
 
+// console.log(calc(4, 7));
+// console.log(calc(6, 10));
+// console.log(calc(14, 17));
 
-// Третий способ с преминением do
-// let i = 0;
-// do {
-//     const a = prompt('Last seen movie', ''),
-//           b = prompt('Your moovie score?', '');
-//     if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-//         personalMovieDB.movies[a] = b;
-//         console.log('done');
-//         i++;
-//         }
-//     }
-// while (i < 2);
-
-
-if (personalMovieDB.count < 10) {
-    console.log('Watched less films than you need!');
-} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-    console.log('You are classic user');
-} else if (personalMovieDB.count >= 30) {
-    console.log('You are moovie expert too much films');
-} else {
-    console.log('Error');
+function ret() {
+    let num = 50;
+    return num;
 }
 
+const anotherNum = ret();
+console.log(anotherNum); 
 
 
-console.log(personalMovieDB); 
+const logger = function() {
+    console.log('Hello world')
+};
+
+logger();
+
+
+
+const calc = (a, b) => a + b;
