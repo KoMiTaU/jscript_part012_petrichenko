@@ -1,31 +1,75 @@
 "use strict";
 
-const str = "teSt";
 
-// console.log(str[2] = 'd');
+let num = 50;
+let numberOfFilms;
+
+function start() {
+    numberOfFilms = prompt('How many movies you have seen?', '');
+
+    while(numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+        numberOfFilms = prompt('How many movies you have seen?', '');
+
+    }
+}
+
+start();
+
+let personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    private: false
+};
 
 
-// console.log(str.toUpperCase());
-console.log(str.toLowerCase());
-console.log(str); 
+function rememberMyFilms() {
+    for (let i = 0; i < 2; i++){
+        const a = prompt('Last seen movie', ''),
+              b = prompt('Your moovie score?', '');
+    
+        if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+            personalMovieDB.movies[a] = b;
+            console.log('done');
+        } else {
+            console.log('error');
+            i--;
+        }
+    }
+}
+
+rememberMyFilms();
 
 
 
-const fruit = "Some fruit";
-console.log(fruit.indexOf("q"));
+function detectPersonalLevel() {
+    if (personalMovieDB.count < 10) {
+        console.log('Watched less films than you need!');
+    } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+        console.log('You are classic user');
+    } else if (personalMovieDB.count >= 30) {
+        console.log('You are moovie expert too much films');
+    } else {
+        console.log('Error');
+    }
+}
 
+detectPersonalLevel();
 
-const logg = "Hello world";
-console.log(logg.slice(6, 11));
+function showMyDB(hidden) {
+    if (!hidden) {
+        console.log(personalMovieDB);
+    }
+}
 
-console.log(logg.substring(6, 11));
+showMyDB(personalMovieDB.private);
 
-console.log(logg.substr(6, 11));
+function writeYourGenres() {
+    for (let i = 1; i <= 3; i++) {
+        const genre = prompt(`Number of favorite movie genre ${i}`);
+        personalMovieDB.genres[i - 1] = genre;
+    }
+}
 
-
-const num = 12.49;
-console.log(Math.round(num));
-
-const test = "12.2px";
-console.log(parseInt(test));
-console.log(parseFloat(test));
+writeYourGenres();
